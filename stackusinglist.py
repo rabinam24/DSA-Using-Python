@@ -5,8 +5,8 @@ class Stack:
     def is_empty(self):
         return len(self.items)==0
     
-    def push(self,item):
-        self.items.append(item)
+    def push(self,data):
+        self.items.append(data)
     
     def pop(self):
         if not self.is_empty():
