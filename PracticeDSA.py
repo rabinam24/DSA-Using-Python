@@ -73,30 +73,61 @@
 
 #Selection sorting
 
-my_array = [64, 34, 25, 5, 22, 11, 90, 12]
+# my_array = [64, 34, 25, 5, 22, 11, 90, 12]
 
-n=len(my_array)
+# n=len(my_array)
 
-for i in range(n-1):
-    min_index=i
-    for j in range(i+1,n):
-        if my_array[j]< my_array[min_index]:
-            min_index=j
-    min_value=my_array.pop(min_index)        
-    my_array.insert(i,min_value)
+# for i in range(n-1):
+#     min_index=i
+#     for j in range(i+1,n):
+#         if my_array[j]< my_array[min_index]:
+#             min_index=j
+#     min_value=my_array.pop(min_index)        
+#     my_array.insert(i,min_value)
     
-print(my_array)
+# print(my_array)
 
-#Improvement of Selection sort
-my_array = [64, 34, 25, 5, 22, 11, 90, 12]
+# #Improvement of Selection sort
+# my_array = [64, 34, 25, 5, 22, 11, 90, 12]
 
-n=len(my_array)
+# n=len(my_array)
 
-for i in range(n-1):
-    min_index=i
-    for j in range(i+1,n):
-        if my_array[j]<my_array[min_index]:
-            min_index=j
-    my_array[i],my_array[min_index]=my_array[min_index],my_array[i]
+# for i in range(n-1):
+#     min_index=i
+#     for j in range(i+1,n):
+#         if my_array[j]<my_array[min_index]:
+#             min_index=j
+#     my_array[i],my_array[min_index]=my_array[min_index],my_array[i]
     
-print(my_array)
+# print(my_array)
+
+
+#Palindrome 
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        x_str= str(x)         #first ma integer lai string ma convert hanim         
+        rev=x_str[::-1]       #ani str mai reverse hanim 
+        return x_str == rev   #ani reverse haneko value start ko value samma equal chha ki xaina check garim
+    
+sol=Solution()
+print(sol.isPalindrome(121))
+print(sol.isPalindrome(-121))
+print(sol.isPalindrome(10))
+
+
+#Length of last word
+#given a string s consisting of words and spaces, return the length of the last word in the string.
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        words = s.strip().split()
+
+        if words:
+            return len(words[-1])
+        else:
+            return 0
+
+sol=Solution()
+print(sol.lengthOfLastWord("Hello World"))
+print(sol.lengthOfLastWord("   fly me   to   the moon  "))
+print(sol.lengthOfLastWord("luffy is still joyboy"))
