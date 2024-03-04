@@ -126,8 +126,3 @@ class Solution:
             return len(words[-1])
         else:
             return 0
-
-sol=Solution()
-print(sol.lengthOfLastWord("Hello World"))
-print(sol.lengthOfLastWord("   fly me   to   the moon  "))
-print(sol.lengthOfLastWord("luffy is still joyboy"))
