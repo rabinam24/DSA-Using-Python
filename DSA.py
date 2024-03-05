@@ -163,3 +163,26 @@ sol = Solution()
 nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 k = sol.removeDuplicates(nums)
 print(k, nums[:k])
+
+
+
+# Remove Element 
+# Input: nums = [3,2,2,3], val = 3
+# Output: 2, nums = [2,2,_,_]
+
+from typing import List
+
+class Solution:
+    # @staticmethod
+    def removeElement(nums: List[int], val: int) -> int:
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k = k + 1
+        return k
+
+nums = [2, 3, 3, 2,4,5,2,9]
+val = 2
+k = Solution.removeElement(nums, val)
+print(k, nums[:k])
