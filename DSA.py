@@ -137,32 +137,32 @@
 # Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 # Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 
-from typing import List
+# from typing import List
 
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
+# class Solution:
+#     def removeDuplicates(self, nums: List[int]) -> int:
+#         if not nums:
+#             return 0
 
-        # Initialize pointers
-        slow_ptr = 0
+#         # Initialize pointers
+#         slow_ptr = 0
 
-        # Iterate through the array with a fast pointer
-        for fast_ptr in range(1, len(nums)):
-            # If the current element is not equal to the previous element,
-            # update the slow pointer and copy the current element to the slow pointer position
-            if nums[fast_ptr] != nums[slow_ptr]:
-                slow_ptr += 1
-                nums[slow_ptr] = nums[fast_ptr]
+#         # Iterate through the array with a fast pointer
+#         for fast_ptr in range(1, len(nums)):
+#             # If the current element is not equal to the previous element,
+#             # update the slow pointer and copy the current element to the slow pointer position
+#             if nums[fast_ptr] != nums[slow_ptr]:
+#                 slow_ptr += 1
+#                 nums[slow_ptr] = nums[fast_ptr]
 
-        # The length of the unique elements is one more than the slow pointer position
-        return slow_ptr + 1
+#         # The length of the unique elements is one more than the slow pointer position
+#         return slow_ptr + 1
 
-# Test the code
-sol = Solution()
-nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-k = sol.removeDuplicates(nums)
-print(k, nums[:k])
+# # Test the code
+# sol = Solution()
+# nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+# k = sol.removeDuplicates(nums)
+# print(k, nums[:k])
 
 
 
@@ -170,19 +170,51 @@ print(k, nums[:k])
 # Input: nums = [3,2,2,3], val = 3
 # Output: 2, nums = [2,2,_,_]
 
+# from typing import List
+
+# class Solution:
+#     # @staticmethod
+#     def removeElement(nums: List[int], val: int) -> int:
+#         k = 0
+#         for i in range(len(nums)):
+#             if nums[i] != val:
+#                 nums[k] = nums[i]
+#                 k = k + 1
+#         return k
+
+# nums = [2, 3, 3, 2,4,5,2,9]
+# val = 2
+# k = Solution.removeElement(nums, val)
+# print(k, nums[:k])
+
+#Search Insert Position
+# Input: nums = [1,3,5,6], target = 5
+# Output: 2
 from typing import List
-
 class Solution:
-    # @staticmethod
-    def removeElement(nums: List[int], val: int) -> int:
-        k = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k = k + 1
-        return k
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
 
-nums = [2, 3, 3, 2,4,5,2,9]
-val = 2
-k = Solution.removeElement(nums, val)
-print(k, nums[:k])
+        return left
+Sol=Solution()
+nums1, target1 = [1, 3, 5, 6], 5
+result1 = Sol.searchInsert(nums1, target1)
+print(result1)  
+
+nums2, target2 = [1, 3, 5, 6], 2
+result2 = Sol.searchInsert(nums2, target2)
+print(result2)  
+
+nums3, target3 = [1, 3, 5, 6], 7
+result3 = Sol.searchInsert(nums3, target3)
+print(result3) 
+
+        
