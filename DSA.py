@@ -190,31 +190,60 @@
 #Search Insert Position
 # Input: nums = [1,3,5,6], target = 5
 # Output: 2
-from typing import List
-class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        left, right = 0, len(nums) - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            if nums[mid] == target:
-                return mid
-            elif nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid - 1
+# from typing import List
+# class Solution:
+#     def searchInsert(self, nums: List[int], target: int) -> int:
+#         left, right = 0, len(nums) - 1
+#         while left <= right:
+#             mid = left + (right - left) // 2
+#             if nums[mid] == target:
+#                 return mid
+#             elif nums[mid] < target:
+#                 left = mid + 1
+#             else:
+#                 right = mid - 1
 
-        return left
-Sol=Solution()
-nums1, target1 = [1, 3, 5, 6], 5
-result1 = Sol.searchInsert(nums1, target1)
-print(result1)  
+#         return left
+# Sol=Solution()
+# nums1, target1 = [1, 3, 5, 6], 5
+# result1 = Sol.searchInsert(nums1, target1)
+# print(result1)  
 
-nums2, target2 = [1, 3, 5, 6], 2
-result2 = Sol.searchInsert(nums2, target2)
-print(result2)  
+# nums2, target2 = [1, 3, 5, 6], 2
+# result2 = Sol.searchInsert(nums2, target2)
+# print(result2)  
 
-nums3, target3 = [1, 3, 5, 6], 7
-result3 = Sol.searchInsert(nums3, target3)
-print(result3) 
+# nums3, target3 = [1, 3, 5, 6], 7
+# result3 = Sol.searchInsert(nums3, target3)
+# print(result3) 
 
+
+# Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+# Input: nums = [1,1,2]
+# Output:
+# [[1,1,2],
+#  [1,2,1],
+#  [2,1,1]]
+
+def permuteUnique(nums):
+    def backtrack(start):
+        if start == len(nums):
+            result.append(nums[:])
+            return
         
+        used=set()
+        
+        for i in range(start,len(nums)):
+            if nums[i] not in used:
+                used.add(nums[i])
+                nums[start],nums[i]= nums[i],nums[start]
+                backtrack(start + 1)
+                nums[start],nums[i]= nums[i],nums[start]
+        
+    result=[]
+    backtrack(0)
+    return result
+
+
+nums1 = [1, 1, 2]
+print(permuteUnique(nums1))
