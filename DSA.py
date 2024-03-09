@@ -225,25 +225,81 @@
 #  [1,2,1],
 #  [2,1,1]]
 
-def permuteUnique(nums):
-    def backtrack(start):
-        if start == len(nums):
-            result.append(nums[:])
-            return
+# def permuteUnique(nums):
+#     def backtrack(start):
+#         if start == len(nums):
+#             result.append(nums[:])
+#             return
         
-        used=set()
+#         used=set()
         
-        for i in range(start,len(nums)):
-            if nums[i] not in used:
-                used.add(nums[i])
-                nums[start],nums[i]= nums[i],nums[start]
-                backtrack(start + 1)
-                nums[start],nums[i]= nums[i],nums[start]
+#         for i in range(start,len(nums)):
+#             if nums[i] not in used:
+#                 used.add(nums[i])
+#                 nums[start],nums[i]= nums[i],nums[start]
+#                 backtrack(start + 1)
+#                 nums[start],nums[i]= nums[i],nums[start]
         
-    result=[]
-    backtrack(0)
-    return result
+#     result=[]
+#     backtrack(0)
+#     return result
 
 
-nums1 = [1, 1, 2]
-print(permuteUnique(nums1))
+# nums1 = [1, 1, 2]
+# print(permuteUnique(nums1))
+
+
+# Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+# Input: head = [1,1,2]
+# Output: [1,2]
+# Importing the "Optional" type hint from the "typing" module.
+from typing import Optional
+
+# Defining a class called "ListNode" for a single element in a linked list.
+class ListNode:
+    # Constructor method to initialize a ListNode with a value (default is 0) and a reference to the next node (default is None).
+    def __init__(self, val=0, next=None):
+        self.val = val  # The value of the current node.
+        self.next = next  # Reference to the next node in the list.
+
+# Defining a class called "Solution" that contains a method to delete duplicate values from a linked list.
+class Solution:
+    # Method to delete duplicate values from a linked list.
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        current = head  # Starting from the head of the linked list.
+
+        # Looping through the linked list until either it reaches the end or there's only one element left.
+        while current and current.next:
+            # Checking if the current node's value is the same as the next node's value.
+            if current.val == current.next.val:
+                # If yes, skipping the next node by updating the "next" reference.
+                current.next = current.next.next
+            else:
+                # If no, moving to the next node in the linked list.
+                current = current.next
+
+        return head  # Returning the modified linked list.
+
+# Function to print the elements of a linked list.
+def print_linked_list(head):
+    while head:
+        print(head.val, end=" ")  # Printing the value of the current node.
+        head = head.next  # Moving to the next node.
+    print()
+
+# Creating an instance of the "Solution" class.
+sol = Solution()
+
+# Test case 1: Creating a linked list [1, 1, 2], calling the deleteDuplicates method, and printing the result.
+head1 = ListNode(1, ListNode(1, ListNode(2)))
+result1 = sol.deleteDuplicates(head1)
+print("Test case 1:")
+print_linked_list(result1)
+# Expected Output: 1 2
+
+# Test case 2: Creating a linked list [1, 1, 2, 3, 3], calling the deleteDuplicates method, and printing the result.
+head2 = ListNode(1, ListNode(1, ListNode(2, ListNode(3, ListNode(3)))))
+result2 = sol.deleteDuplicates(head2)
+print("Test case 2:")
+print_linked_list(result2)
+# Expected Output: 1 2 3
