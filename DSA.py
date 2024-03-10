@@ -303,3 +303,45 @@ result2 = sol.deleteDuplicates(head2)
 print("Test case 2:")
 print_linked_list(result2)
 # Expected Output: 1 2 3
+
+#Linked list cycle Tortoise and hare problem
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head or not head.next:
+            return False
+
+        tortoise = head
+        hare = head.next
+
+        while tortoise != hare:
+            if not hare or not hare.next:
+                return False
+            
+            tortoise = tortoise.next
+            hare = hare.next.next
+
+        return True
+
+
+head1 = ListNode(3)
+node2 = ListNode(2)
+node3 = ListNode(0)
+node4 = ListNode(-4)
+
+head1.next = node2
+node2.next = node3
+node3.next = node4
+node4.next = node2  # Creating a cycle
+
+sol = Solution()
+result1 = sol.hasCycle(head1)
+print("Example 1:", result1)
+        
+    
+       
