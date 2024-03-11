@@ -343,5 +343,51 @@ sol = Solution()
 result1 = sol.hasCycle(head1)
 print("Example 1:", result1)
         
+ # Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow,fast= head, head
+
+        while fast and fast.next:
+            slow= slow.next
+            fast= fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+
+ #Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+class TreeNode:
+    def __init__(self,val=0, left= None,right=None):
+        self.val=val
+        self.left=left
+        self.right=right
+        
+class Solution:
+    def issymmetric(self,root):
+        def isMirror(left,right):
+            if not left and not right:
+                return True
+            
+            if not left or not right:
+                return False
+            
+            return (left.val ==right.val) and isMirror(left.right,right.left) and isMirror(left.left,right.right)
+        return isMirror(root,root)
     
-       
+sol=Solution()
+root1 = TreeNode(1)
+root1.left = TreeNode(2, TreeNode(3), TreeNode(4))
+root1.right = TreeNode(2, TreeNode(4), TreeNode(3))
+print(sol.issymmetric(root1))  
+
+root2 = TreeNode(1)
+root2.left = TreeNode(2, None, TreeNode(3))
+root2.right = TreeNode(2, None, TreeNode(3))
+print(sol.issymmetric(root2))  
