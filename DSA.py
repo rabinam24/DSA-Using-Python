@@ -253,141 +253,214 @@
 # Input: head = [1,1,2]
 # Output: [1,2]
 # Importing the "Optional" type hint from the "typing" module.
-from typing import Optional
+# from typing import Optional
 
-# Defining a class called "ListNode" for a single element in a linked list.
-class ListNode:
-    # Constructor method to initialize a ListNode with a value (default is 0) and a reference to the next node (default is None).
-    def __init__(self, val=0, next=None):
-        self.val = val  # The value of the current node.
-        self.next = next  # Reference to the next node in the list.
+# # Defining a class called "ListNode" for a single element in a linked list.
+# class ListNode:
+#     # Constructor method to initialize a ListNode with a value (default is 0) and a reference to the next node (default is None).
+#     def __init__(self, val=0, next=None):
+#         self.val = val  # The value of the current node.
+#         self.next = next  # Reference to the next node in the list.
 
-# Defining a class called "Solution" that contains a method to delete duplicate values from a linked list.
-class Solution:
-    # Method to delete duplicate values from a linked list.
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        current = head  # Starting from the head of the linked list.
+# # Defining a class called "Solution" that contains a method to delete duplicate values from a linked list.
+# class Solution:
+#     # Method to delete duplicate values from a linked list.
+#     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         current = head  # Starting from the head of the linked list.
 
-        # Looping through the linked list until either it reaches the end or there's only one element left.
-        while current and current.next:
-            # Checking if the current node's value is the same as the next node's value.
-            if current.val == current.next.val:
-                # If yes, skipping the next node by updating the "next" reference.
-                current.next = current.next.next
-            else:
-                # If no, moving to the next node in the linked list.
-                current = current.next
+#         # Looping through the linked list until either it reaches the end or there's only one element left.
+#         while current and current.next:
+#             # Checking if the current node's value is the same as the next node's value.
+#             if current.val == current.next.val:
+#                 # If yes, skipping the next node by updating the "next" reference.
+#                 current.next = current.next.next
+#             else:
+#                 # If no, moving to the next node in the linked list.
+#                 current = current.next
 
-        return head  # Returning the modified linked list.
+#         return head  # Returning the modified linked list.
 
-# Function to print the elements of a linked list.
-def print_linked_list(head):
-    while head:
-        print(head.val, end=" ")  # Printing the value of the current node.
-        head = head.next  # Moving to the next node.
-    print()
+# # Function to print the elements of a linked list.
+# def print_linked_list(head):
+#     while head:
+#         print(head.val, end=" ")  # Printing the value of the current node.
+#         head = head.next  # Moving to the next node.
+#     print()
 
-# Creating an instance of the "Solution" class.
-sol = Solution()
+# # Creating an instance of the "Solution" class.
+# sol = Solution()
 
-# Test case 1: Creating a linked list [1, 1, 2], calling the deleteDuplicates method, and printing the result.
-head1 = ListNode(1, ListNode(1, ListNode(2)))
-result1 = sol.deleteDuplicates(head1)
-print("Test case 1:")
-print_linked_list(result1)
-# Expected Output: 1 2
+# # Test case 1: Creating a linked list [1, 1, 2], calling the deleteDuplicates method, and printing the result.
+# head1 = ListNode(1, ListNode(1, ListNode(2)))
+# result1 = sol.deleteDuplicates(head1)
+# print("Test case 1:")
+# print_linked_list(result1)
+# # Expected Output: 1 2
 
-# Test case 2: Creating a linked list [1, 1, 2, 3, 3], calling the deleteDuplicates method, and printing the result.
-head2 = ListNode(1, ListNode(1, ListNode(2, ListNode(3, ListNode(3)))))
-result2 = sol.deleteDuplicates(head2)
-print("Test case 2:")
-print_linked_list(result2)
-# Expected Output: 1 2 3
+# # Test case 2: Creating a linked list [1, 1, 2, 3, 3], calling the deleteDuplicates method, and printing the result.
+# head2 = ListNode(1, ListNode(1, ListNode(2, ListNode(3, ListNode(3)))))
+# result2 = sol.deleteDuplicates(head2)
+# print("Test case 2:")
+# print_linked_list(result2)
+# # Expected Output: 1 2 3
 
-#Linked list cycle Tortoise and hare problem
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# #Linked list cycle Tortoise and hare problem
+# # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if not head or not head.next:
-            return False
+# class Solution:
+#     def hasCycle(self, head: Optional[ListNode]) -> bool:
+#         if not head or not head.next:
+#             return False
 
-        tortoise = head
-        hare = head.next
+#         tortoise = head
+#         hare = head.next
 
-        while tortoise != hare:
-            if not hare or not hare.next:
-                return False
+#         while tortoise != hare:
+#             if not hare or not hare.next:
+#                 return False
             
-            tortoise = tortoise.next
-            hare = hare.next.next
+#             tortoise = tortoise.next
+#             hare = hare.next.next
 
-        return True
+#         return True
 
 
-head1 = ListNode(3)
-node2 = ListNode(2)
-node3 = ListNode(0)
-node4 = ListNode(-4)
+# head1 = ListNode(3)
+# node2 = ListNode(2)
+# node3 = ListNode(0)
+# node4 = ListNode(-4)
 
-head1.next = node2
-node2.next = node3
-node3.next = node4
-node4.next = node2  # Creating a cycle
+# head1.next = node2
+# node2.next = node3
+# node3.next = node4
+# node4.next = node2  # Creating a cycle
 
-sol = Solution()
-result1 = sol.hasCycle(head1)
-print("Example 1:", result1)
+# sol = Solution()
+# result1 = sol.hasCycle(head1)
+# print("Example 1:", result1)
         
- # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+#  # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        slow,fast= head, head
+# class Solution:
+#     def hasCycle(self, head: Optional[ListNode]) -> bool:
+#         slow,fast= head, head
 
-        while fast and fast.next:
-            slow= slow.next
-            fast= fast.next.next
-            if slow == fast:
-                return True
-        return False
+#         while fast and fast.next:
+#             slow= slow.next
+#             fast= fast.next.next
+#             if slow == fast:
+#                 return True
+#         return False
 
 
- #Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+#  #Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+# class TreeNode:
+#     def __init__(self,val=0, left= None,right=None):
+#         self.val=val
+#         self.left=left
+#         self.right=right
+        
+# class Solution:
+#     def issymmetric(self,root):
+#         def isMirror(left,right):
+#             if not left and not right:
+#                 return True
+            
+#             if not left or not right:
+#                 return False
+            
+#             return (left.val ==right.val) and isMirror(left.right,right.left) and isMirror(left.left,right.right)
+#         return isMirror(root,root)
+    
+# sol=Solution()
+# root1 = TreeNode(1)
+# root1.left = TreeNode(2, TreeNode(3), TreeNode(4))
+# root1.right = TreeNode(2, TreeNode(4), TreeNode(3))
+# print(sol.issymmetric(root1))  
+
+# root2 = TreeNode(1)
+# root2.left = TreeNode(2, None, TreeNode(3))
+# root2.right = TreeNode(2, None, TreeNode(3))
+# print(sol.issymmetric(root2))  
+
+
+# #A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+# class TreeNode:
+#     def __init__(self,var=0, left=None,right=None):
+#         self.var=var
+#         self.left=left
+#         self.right=right
+
+# class Solution:
+#     def maxDepth(self,root):
+#         if not root:
+#             return 0
+        
+#         left_depth= self.maxDepth(root.left)
+#         right_depth=self.maxDepth(root.right)
+        
+#         return max(left_depth,right_depth) + 1
+
+# sol= Solution()
+
+# root = TreeNode(3)
+# root.left = TreeNode(9)
+# root.right = TreeNode(20)
+# root.right.left = TreeNode(15)
+# root.right.right = TreeNode(7)
+
+# print(sol.maxDepth(root))
+
+# Given an integer array nums where the elements are sorted in ascending order, convert it to a 
+# height-balanced binary search tree.
 
 class TreeNode:
-    def __init__(self,val=0, left= None,right=None):
+    def __init__(self,val=0,left=None,right=None):
         self.val=val
         self.left=left
         self.right=right
-        
+    
 class Solution:
-    def issymmetric(self,root):
-        def isMirror(left,right):
-            if not left and not right:
-                return True
+    def sortedBT(self,nums):
+        if not nums:
+            return None
+        
+        mid= len(nums) // 2
+        root=TreeNode(nums[mid])
+        
+        root.left=self.sortedBT(nums[:mid])
+        root.right=self.sortedBT(nums[mid+1:])
+        
+        return root
+    
+    def printTree(self,root):
+        if not root:
+            return []
+        
+        result=[]
+        queue=[root]
+        
+        while queue:
+            node=queue.pop(0)
             
-            if not left or not right:
-                return False
-            
-            return (left.val ==right.val) and isMirror(left.right,right.left) and isMirror(left.left,right.right)
-        return isMirror(root,root)
+            if node:
+                result.append(node.val)
+                queue.append(node.left)
+                queue.append(node.right)
+                
+        return result
     
 sol=Solution()
-root1 = TreeNode(1)
-root1.left = TreeNode(2, TreeNode(3), TreeNode(4))
-root1.right = TreeNode(2, TreeNode(4), TreeNode(3))
-print(sol.issymmetric(root1))  
-
-root2 = TreeNode(1)
-root2.left = TreeNode(2, None, TreeNode(3))
-root2.right = TreeNode(2, None, TreeNode(3))
-print(sol.issymmetric(root2))  
+nums1 = [-10, -3, 0, 5, 9]
+root1=sol.sortedBT(nums1)
+print(sol.printTree(root1))
