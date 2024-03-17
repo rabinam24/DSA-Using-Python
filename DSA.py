@@ -464,3 +464,22 @@ sol=Solution()
 nums1 = [-10, -3, 0, 5, 9]
 root1=sol.sortedBT(nums1)
 print(sol.printTree(root1))
+
+
+# Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+# Input: num = 38
+# Output: 2
+
+class Solution:
+    def addDigit(self, num:int)-> int:
+        while num >=10:
+            sum_digits=0
+            while num>0:
+                sum_digits += num % 10
+                num //= 10
+            num= sum_digits
+        return num
+
+sol=Solution()
+print(sol.addDigit(38))
+        
