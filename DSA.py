@@ -498,3 +498,62 @@ class Solution:
     
 sol= Solution()
 print(sol.missingvalue([9,6,4,2,3,5,7,0,1])) 
+
+
+# Score of Parentheses
+# Given a balanced parentheses string s, return the score of the string.
+# The score of a balanced parentheses string is based on the following rule:
+# "()" has score 1.
+# AB has score A + B, where A and B are balanced parentheses strings.
+# (A) has score 2 * A, where A is a balanced parentheses string.
+ 
+class Solution:
+    def parenthesis(self,s: str) -> int:
+        stack=[0]
+        for char in s:
+            if char == '(':
+                stack.append(0)
+            else:
+                score= stack.pop()
+                if score==0:
+                    stack[-1] += 1
+                else: 
+                    stack[-1] += 2 * score
+        return stack[0]
+    
+sol=Solution()
+
+# Test cases
+print(sol.parenthesis("()"))     # Output: 1
+print(sol.parenthesis("(())"))   # Output: 2
+print(sol.parenthesis("(()())"))   # Output: 4   
+             
+# Longest Common Prefix        
+#       Input: strs = ["flower","flow","flight"]
+# Output: "fl"   
+from typing import List
+class Solution:
+    def longestcommonprefix(self,strs:List[str])->str:
+        if not strs:
+            return ""
+        
+        min_len=min(len(s) for s in strs)
+        prefix=""
+        for i in range(min_len):
+            if all(s[i]== strs[0][i] for s in strs):
+                prefix += strs[0][i]
+            else:
+                break
+        return prefix
+    
+sol= Solution()
+strs1 = ["flower","flow","flight"]
+print(sol.longestcommonprefix(strs1))  # Output: "fl"
+
+strs2 = ["dog","racecar","car"]
+print(sol.longestcommonprefix(strs2))  # Output: ""
+                
+            
+        
+            
+        
